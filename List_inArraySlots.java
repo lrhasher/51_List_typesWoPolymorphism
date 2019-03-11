@@ -6,10 +6,10 @@
 public class List_inArraySlots {
 
     private int[] intElements;
-    private int[] doubleElements;
-    private int[] stringElements;
+    private double[] doubleElements;
+    private String[] stringElements;
     private int filledElements; // the number of elements in this list
-    
+
     /* type identifier for each element
        That is, typeOfElements[i] == 0 means element i is an integer;
                                      1 means element i is a double;
@@ -25,22 +25,38 @@ public class List_inArraySlots {
       Construct an empty list with a small initial capacity.
      */
     public List_inArraySlots() {
+        intElements     = new int[INITIAL_CAPACITY];
+        doubleElements  = new double[INITIAL_CAPACITY];
+        stringElements  = new String[INITIAL_CAPACITY];
+        intElements     = new int[INITIAL_CAPACITY];
     }
 
 
     /**
       @return the number of elements in this list
      */
-    // public int size() {
-    // }
+    public int size() {
+        return filledElements;
+    }
 
 
      /**
        @return a string representation of this list,
        in [a,b,c,] format
       */
-    // public String toString() {
-    // }
+    public String toString() {
+        String output = "[";
+        for (int i = 0; i < filledElements; i++) {
+            if (typeOfElements[i] = 0)
+                output += intElements[i];
+            else if (typeOfElements[i] = 1)
+                output += doubleElements[i];
+            else
+                output += stringElements[i];
+            output += ",";
+        }
+        return output + "]";
+    }
 
 
     /**

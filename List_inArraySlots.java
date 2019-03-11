@@ -28,7 +28,7 @@ public class List_inArraySlots {
         intElements     = new int[INITIAL_CAPACITY];
         doubleElements  = new double[INITIAL_CAPACITY];
         stringElements  = new String[INITIAL_CAPACITY];
-        intElements     = new int[INITIAL_CAPACITY];
+        typeOfElements  = new int[INITIAL_CAPACITY];
     }
 
 
@@ -47,9 +47,9 @@ public class List_inArraySlots {
     public String toString() {
         String output = "[";
         for (int i = 0; i < filledElements; i++) {
-            if (typeOfElements[i] = 0)
+            if (typeOfElements[i] == 0)
                 output += intElements[i];
-            else if (typeOfElements[i] = 1)
+            else if (typeOfElements[i] == 1)
                 output += doubleElements[i];
             else
                 output += stringElements[i];
@@ -64,25 +64,45 @@ public class List_inArraySlots {
 
       @return true, in keeping with conventions yet to be discussed
      */
-     // public boolean add( int type   // same meaning as in typeOfElements
-                       // , int intValue
-                       // , double doubleValue
-                       // , String stringValue
-                       // ) {
-     // }
+     public boolean add( int type   // same meaning as in typeOfElements
+                       , int intValue
+                       , double doubleValue
+                       , String stringValue
+                       ) {
+           if (filledElements == typeOfElements.length) expand();
+
+           typeOfElements[filledElements]   = type;
+           intElements[filledElements]      = intValue;
+           doubleElements[filledElements]   = doubleValue;
+           stringElements[filledElements]   = stringValue;
+
+           filledElements++;
+     }
 
 
     /**
       Double the capacity of the List_inArraySlots,
       preserving existing data.
      */
-     // private void expand() {
-        // System.out.println( "expand... (for debugging)");
-           // /* S.O.P. rules for debugging:
-              // Working methods should be silent. But during
-              // development, the programmer must verify that
-              // this method is called when that is appropriate.
-              // So test using the println(), then comment it out.
-              // */
-     // }
+     private void expand() {
+          int[] biggerInt = new int[ intElements.length * 2];
+          for( int elemIndex = 0; elemIndex < filledElements; elemIndex++)
+              biggerInt[ elemIndex] = intElements[ elemIndex];
+          intElements = biggerInt;
+
+          double[] biggerDouble = new double[ doubleElements.length * 2];
+          for( int elemIndex = 0; elemIndex < filledElements; elemIndex++)
+              biggerDouble[ elemIndex] = doubleElements[ elemIndex];
+          doubleElements = biggerDouble;
+
+          String[] biggerString = new String[ stringElements.length * 2];
+          for( int elemIndex = 0; elemIndex < filledElements; elemIndex++)
+              biggerString[ elemIndex] = stringElements[ elemIndex];
+          stringElements = biggerString;
+
+          int[] biggerType = new int[ typeOfElements.length * 2];
+          for( int elemIndex = 0; elemIndex < filledElements; elemIndex++)
+              biggerType[ elemIndex] = typeOfElements[ elemIndex];
+          typeOfElements = biggerType;
+     }
 }

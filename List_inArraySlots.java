@@ -77,6 +77,7 @@ public class List_inArraySlots {
            stringElements[filledElements]   = stringValue;
 
            filledElements++;
+           return true;
      }
 
 

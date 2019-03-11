@@ -22,11 +22,11 @@ public class UserOfList {
         System.out.println( "added double: " + list);
 
         // Add enough elements that expansion is expected
-        for( ; elemIndex < 15; elemIndex++ ) {
+        for( int elemIndex = 0; elemIndex < 15; elemIndex++ ) {
 
-            if( elemIndex == 10) System.out.println( "expansion expected");
+            if( list.size() == 10) System.out.println( "expansion expected");
 
-            list.add( 0, -i, -2.0,  "junk");
+            list.add( 0, -elemIndex, -2.0,  "junk");
             System.out.println( "number of elements: " + list.size() );
         }
         System.out.println("result of expanded list: "
